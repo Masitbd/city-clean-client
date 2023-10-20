@@ -1,12 +1,11 @@
 import AvailableService from "@/components/AvailableService";
-import Banner from "@/components/Banner";
-import Blogs from "@/components/Blogs";
-import CategorySection from "@/components/CategorySection";
-import ClientReview from "@/components/ClientReview";
-import FAQ from "@/components/FAQ";
-import LatestNews from "@/components/LatestNews";
-import Overview from "@/components/Overview";
-import UpcomingService from "@/components/UpcomingService";
+import Banner from "@/components/homepage/Banner";
+import Blogs from "@/components/homepage/Blogs";
+import CategorySection from "@/components/homepage/CategorySection";
+import ClientReview from "@/components/homepage/ClientReview";
+import FAQ from "@/components/homepage/FAQ";
+import LatestNews from "@/components/homepage/LatestNews";
+import UpcomingService from "@/components/homepage/UpcomingService";
 
 export default function Home() {
   return (

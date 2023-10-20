@@ -1,4 +1,4 @@
-import CategoryCard from "@/app/reuseable/CategoryCard";
+import CategoryCard from "@/components/reuseable/CategoryCard";
 import { FaHome } from "react-icons/fa";
 
 export default function CategorySection() {

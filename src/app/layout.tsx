@@ -1,9 +1,11 @@
-import PrimaryLayout from "../layout/PrimaryLayout";
+import PrimaryLayout from "@/layout/PrimaryLayout";
 import "./globals.css";
 import type { Metadata } from "next";
+import Providers from "@/lib/Providers";
+
 export const metadata: Metadata = {
-  title: "Create Next App",
-  description: "City clean aps",
+  title: "CleanCo Org",
+  description: "CleanCo is a cleaning service",
 };
 
 export default function RootLayout({
@@ -11,5 +13,9 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
-  return <PrimaryLayout>{children}</PrimaryLayout>;
+  return (
+    <Providers>
+      <PrimaryLayout>{children}</PrimaryLayout>
+    </Providers>
+  );
 }

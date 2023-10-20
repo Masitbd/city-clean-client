@@ -1,5 +1,5 @@
-import ServiceCard from "@/app/reuseable/ServiceCard";
 import React from "react";
+import ServiceCard from "./reuseable/ServiceCard";
 
 export default function AvailableService() {
   return (

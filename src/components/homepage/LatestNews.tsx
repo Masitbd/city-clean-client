@@ -1,4 +1,4 @@
-import NewsCard from "@/app/reuseable/NewsCard";
+import NewsCard from "@/components/reuseable/NewsCard";
 import React from "react";
 
 export default function LatestNews() {
