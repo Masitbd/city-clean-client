@@ -1,4 +1,4 @@
-import AvailableService from "@/components/AvailableService";
+import AvailableService from "@/components/homepage/AvailableService";
 import Banner from "@/components/homepage/Banner";
 import Blogs from "@/components/homepage/Blogs";
 import CategorySection from "@/components/homepage/CategorySection";
