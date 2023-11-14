@@ -11,10 +11,9 @@ export default function CategoryCard({ title, id }: ICategoryCard) {
   return (
     <div
       onClick={() => router.push(`categories/${id}`)}
-      className="flex flex-col items-center gap-2 bg-orange-300 rounded-md p-6 hover:-translate-y-2 transition-transform"
+      className="flex flex-col items-center gap-2 bg-sky-600 rounded-md p-6 hover:-translate-y-2 transition-transform"
     >
-      {/* <div className="text-3xl">{icon}</div> */}
-      <p className="font-bold">{title}</p>
+      <p className="font-bold text-white">{title}</p>
     </div>
   );
 }

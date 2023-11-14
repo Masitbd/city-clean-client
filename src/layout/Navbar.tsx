@@ -29,16 +29,18 @@ function Navbar() {
     <div className="navbar bg-base-200">
       <div className="flex-1">
         <Link href={`/`} className="btn btn-ghost normal-case text-xl">
-          City Clean Aps
+          <p className="bg-sky-600 text-white px-3 py-2 font-thin">
+            City Clean Aps
+          </p>
         </Link>
       </div>
       <div className="flex-none gap-2">
         <div className="form-control">
-          <input
+          {/*  <input
             type="text"
             placeholder="Search"
             className="input input-bordered w-24 md:w-auto"
-          />
+          /> */}
         </div>
         <div className="dropdown dropdown-end">
           <label tabIndex={0} className="btn btn-ghost btn-circle">
@@ -99,7 +101,10 @@ function Navbar() {
                   <a>Dashboard</a>
                 </li>
               </Link>
-              <button onClick={handleLogOut} className="btn btn-sm btn-error">
+              <button
+                onClick={handleLogOut}
+                className="btn btn-sm btn-error text-white"
+              >
                 Logout
               </button>
             </ul>

@@ -4,12 +4,12 @@ import Link from "next/link";
 
 export default function ServiceCard({ data }: { data: any }) {
   return (
-    <div className="card w-96 bg-base-100 shadow-xl rounded-md">
+    <div className="card w-96 bg-base-100 shadow-xl rounded-md bg-slate-50">
       <figure>
         <img
-          src="https://images.unsplash.com/photo-1550963295-019d8a8a61c5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjB8fGNsZWFuaW5nfGVufDB8fDB8fHww&auto=format&fit=crop&w=500&q=60"
+          src="https://media.istockphoto.com/id/1392421572/photo/nurse-cleaning-hospital-ward.jpg?s=2048x2048&w=is&k=20&c=H8kvHCj6fezaR81gUFq8Q1ANN6nsKZiBHguTNRh6T3I="
           alt="Shoes"
-          className="h-28 w-full object-cover "
+          className="h-52 w-full object-cover "
           //   width={100}
           //   height={100}
         />
@@ -17,7 +17,7 @@ export default function ServiceCard({ data }: { data: any }) {
       <div className="card-body">
         <h2 className="card-title">
           {data?.title}
-          <div className="badge badge-sm badge-secondary">
+          <div className="badge badge-sm badge-primary">
             {data?.category?.title}
           </div>
         </h2>
@@ -26,7 +26,7 @@ export default function ServiceCard({ data }: { data: any }) {
           <p className="font-bold">Price:</p>
           <span>{data?.price}tk</span>
         </div>
-        <Link href={`/service/${data?._id}`} className="btn btn-primary">
+        <Link href={`/service/${data?._id}`} className="btn btn-secondary">
           See Details
         </Link>
       </div>

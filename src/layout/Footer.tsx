@@ -2,8 +2,8 @@ import React from "react";
 
 export default function Footer() {
   return (
-    <footer className="footer p-10 bg-base-200 text-base-content">
-      <nav>
+    <footer className="footer p-10 bg-base-300 text-base-content">
+      <nav className="px-10">
         <header className="footer-title">Services</header>
         <a className="link link-hover">Branding</a>
         <a className="link link-hover">Design</a>
@@ -23,7 +23,7 @@ export default function Footer() {
         <a className="link link-hover">Privacy policy</a>
         <a className="link link-hover">Cookie policy</a>
       </nav>
-      <form>
+      <form className="pl-14">
         <header className="footer-title">Newsletter</header>
         <fieldset className="form-control w-80">
           <label className="label">
@@ -35,7 +35,7 @@ export default function Footer() {
               placeholder="username@site.com"
               className="input input-bordered w-full pr-16"
             />
-            <button className="btn btn-primary absolute top-0 right-0 rounded-l-none">
+            <button className="btn btn-secondary absolute top-0 right-0 rounded-l-none">
               Subscribe
             </button>
           </div>

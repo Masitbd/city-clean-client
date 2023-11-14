@@ -1,4 +1,4 @@
-'use client'
+"use client";
 import { ENUM_USER_ROLE } from "@/enums/common";
 import { getUserInfo } from "@/services/auth.services";
 import SideBarItems from "@/utils/SideBarItems";
@@ -9,10 +9,9 @@ interface ILayoutProps {
 }
 
 export default function layout({ children }: ILayoutProps) {
-  const userInfo = getUserInfo()
+  const userInfo = getUserInfo();
   //@ts-ignore
   const role = userInfo?.role;
-
 
   return (
     <div className="drawer drawer-open">

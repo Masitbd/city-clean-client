@@ -92,7 +92,7 @@ export default function Reviews({ serviceId }: IReviewsProps) {
             <ReviewCard key={review._id} review={review} />
           ))
         ) : (
-          <p>No Reviews Yet :(</p>
+          <p>No Reviews Yet</p>
         )}
       </div>
     </div>
