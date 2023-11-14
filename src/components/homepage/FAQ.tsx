@@ -1,4 +1,6 @@
+
 export default function FAQ() {
+
   return (
     <div className="section-padding">
       <h1 className="section-heading">Frequently Asked Question</h1>

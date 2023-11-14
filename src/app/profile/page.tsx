@@ -1,44 +1,49 @@
 "use client";
-import { useAddAdminMutation } from "@/redux/api/adminApi";
-import React, { useEffect } from "react";
+import {
+  useGetProfileQuery,
+  useUpdateProfileMutation,
+} from "@/redux/api/profileApi";
+import { useEffect } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import toast from "react-hot-toast";
 
 type Inputs = {
   name: string;
   email: string;
-  age: string;
-  password: string;
+  age: number;
   contactNo: string;
   address: string;
 };
 
-export default function CreateAdmin() {
-  const [addAdmin, { isError, isLoading, isSuccess }] = useAddAdminMutation();
+export default function Profile() {
+  const { data } = useGetProfileQuery({});
+  const [updateProfile, { isError, isLoading, isSuccess }] =
+    useUpdateProfileMutation();
 
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm<Inputs>();
+  const defaultValues = data?.data;
+  const { register, handleSubmit, reset } = useForm<Inputs>({ defaultValues });
   const onSubmit: SubmitHandler<Inputs> = async (data: any) => {
-    try {
-      data.age = Number(data.age);
-      await addAdmin(data);
-    } catch (error) {}
+    updateProfile(data);
   };
 
   useEffect(() => {
-    if (isSuccess) toast.success("Admin Create succesfully", { id: "success" });
+    reset(defaultValues);
+  }, [reset, defaultValues]);
+
+  useEffect(() => {
+    if (isSuccess)
+      toast.success("Profile Update succesfully", { id: "success" });
     if (isLoading)
       toast.loading("Processing...", { id: "process", duration: 800 });
-    if (isError) toast.error("Failed to create", { id: "err" });
+    if (isError) toast.error("Failed to update", { id: "err" });
   }, [isSuccess, isError, isLoading]);
 
   return (
-    <div>
-      <h2 className="text-2xl font-bold mb-6">Create Admin</h2>
-      <div className="card flex-shrink-0 w-full max-w-3xl shadow-2xl bg-base-100">
+    <div className="min-h-screen px-4 my-6">
+      <h1 className="text-3xl font-bold text-center">
+        Welcome to Profile Page
+      </h1>
+      <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl mx-auto mt-10 bg-base-200">
         <form className="card-body" onSubmit={handleSubmit(onSubmit)}>
           <div className="form-control">
             <label className="label">
@@ -90,34 +95,17 @@ export default function CreateAdmin() {
           </div>
           <div className="form-control">
             <label className="label">
-              <span className="label-text">Password</span>
-            </label>
-            <input
-              type="password"
-              placeholder="password"
-              className="input input-bordered"
-              required
-              {...register("password", { required: true, minLength: 6 })}
-            />
-            {errors.password?.type === "minLength" && (
-              <p className="text-red-600 text-sm">
-                Password must at least 6 character
-              </p>
-            )}
-          </div>
-          <div className="form-control">
-            <label className="label">
               <span className="label-text">Address</span>
             </label>
             <textarea
               className="textarea textarea-bordered resize-none"
-              placeholder="address"
+              placeholder="Bio"
               required
               {...register("address", { required: true })}
             ></textarea>
           </div>
           <div className="form-control mt-6">
-            <button className="btn btn-primary">Create</button>
+            <button className="btn btn-primary">Update</button>
           </div>
         </form>
       </div>

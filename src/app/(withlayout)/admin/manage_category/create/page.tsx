@@ -9,10 +9,12 @@ type Inputs = {
 };
 
 export default function CreateCategory() {
-  const [addCategory, { isError, isLoading, isSuccess }] =
-    useAddCategoryMutation();
+  const [addCategory, { isError, isLoading, isSuccess }] = useAddCategoryMutation();
 
-  const { register, handleSubmit } = useForm<Inputs>();
+  const {
+    register,
+    handleSubmit,
+  } = useForm<Inputs>();
   const onSubmit: SubmitHandler<Inputs> = async (data: any) => {
     try {
       data.age = Number(data.age);
@@ -21,8 +23,7 @@ export default function CreateCategory() {
   };
 
   useEffect(() => {
-    if (isSuccess)
-      toast.success("Category Create succesfully", { id: "success" });
+    if (isSuccess) toast.success("Category Create succesfully", { id: "success" });
     if (isLoading)
       toast.loading("Processing...", { id: "process", duration: 800 });
     if (isError) toast.error("Failed to create", { id: "err" });

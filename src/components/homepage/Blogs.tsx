@@ -1,5 +1,5 @@
-import BlogCard from "@/components/reuseable/BlogCard";
 import React from "react";
+import BlogCard from "../reuseable/BlogCard";
 
 export default function Blogs() {
   return (

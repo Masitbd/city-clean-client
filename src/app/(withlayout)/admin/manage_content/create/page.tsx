@@ -1,49 +1,33 @@
 "use client";
-import {
-  useGetCategoryQuery,
-  useUpdateCategoryMutation,
-} from "@/redux/api/categoryApi";
-import React, { useEffect, useMemo } from "react";
+import { useAddCategoryMutation } from "@/redux/api/categoryApi";
+import { useAddContentMutation } from "@/redux/api/contentApi";
+import React, { useEffect } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import toast from "react-hot-toast";
 
 type Inputs = {
   title: string;
+  status: string;
 };
 
-export default function EditCategory({ params }: { params: any }) {
-  const id = params.id;
-  const [updateCategory, { isLoading, isError, isSuccess, error }] =
-    useUpdateCategoryMutation();
-  const { data } = useGetCategoryQuery(id);
+export default function CreateCategory() {
+  const [addContent, { isError, isLoading, isSuccess }] =
+    useAddContentMutation();
 
-  const defaultValues = useMemo(() => {
-    return {
-      title: data?.data?.title || "",
-    };
-  }, [data]);
-
-  const { register, handleSubmit, reset } = useForm<Inputs>({
-    defaultValues: defaultValues,
-  });
-
-  useEffect(() => {
-    reset(defaultValues);
-  }, [reset, defaultValues]);
-
+  const { register, handleSubmit } = useForm<Inputs>();
   const onSubmit: SubmitHandler<Inputs> = async (data: any) => {
     try {
       data.age = Number(data.age);
-      await updateCategory({ id, data });
+      await addContent(data);
     } catch (error) {}
   };
 
   useEffect(() => {
     if (isSuccess)
-      toast.success("Category Update succesfully", { id: "success" });
+      toast.success("Content Created succesfully", { id: "success" });
     if (isLoading)
       toast.loading("Processing...", { id: "process", duration: 800 });
-    if (isError) toast.error("Failed to update", { id: "err" });
+    if (isError) toast.error("Failed to create", { id: "err" });
   }, [isSuccess, isError, isLoading]);
 
   return (
@@ -63,8 +47,22 @@ export default function EditCategory({ params }: { params: any }) {
               {...register("title", { required: true })}
             />
           </div>
+
+          <div className="form-control">
+            <label className="label">
+              <span className="label-text">Status</span>
+            </label>
+            <select
+              className="select select-bordered w-full text-black"
+              placeholder="Select Status"
+              {...register("status", { required: true })}
+            >
+              <option value="visible">Visible</option>
+              <option value="invisible">Invisible</option>
+            </select>
+          </div>
           <div className="form-control mt-6">
-            <button className="btn btn-primary">Update</button>
+            <button className="btn btn-primary">Create</button>
           </div>
         </form>
       </div>
