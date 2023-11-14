@@ -5,8 +5,9 @@ import { getUserInfo, removeUserInfo } from "@/services/auth.services";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
+import dynamic from "next/dynamic";
 
-export default function Navbar() {
+function Navbar() {
   const router = useRouter();
   const userInfo = getUserInfo();
   //@ts-ignore
@@ -28,7 +29,7 @@ export default function Navbar() {
     <div className="navbar bg-base-200">
       <div className="flex-1">
         <Link href={`/`} className="btn btn-ghost normal-case text-xl">
-          CleanCo
+          City Clean Aps
         </Link>
       </div>
       <div className="flex-none gap-2">
@@ -112,3 +113,4 @@ export default function Navbar() {
     </div>
   );
 }
+export default dynamic(() => Promise.resolve(Navbar), { ssr: false });

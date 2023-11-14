@@ -10,7 +10,9 @@ export default function Banner() {
       <div className="hero-overlay bg-opacity-60"></div>
       <div className="hero-content text-center text-neutral-content">
         <div className="max-w-lg">
-          <h1 className="mb-5 text-5xl font-bold">Welcome to CleanCo</h1>
+          <h1 className="mb-5 text-5xl font-bold">
+            Welcome to City Cleans Aps
+          </h1>
           <p className="mb-5">
             We provide quality service to our customer to clean their home,
             garden and offices. Ensuring quality is our first and foremost duty.
